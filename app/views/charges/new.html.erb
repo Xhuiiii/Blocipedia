@@ -1,0 +1,21 @@
+<%= form_tag charges_path do %>
+	<article>
+		<% if flash[:error].present? %>
+			<div id="error_explanation">
+				<p><%= flash[:error] %></p>
+			</div>
+		<% end %>
+		<p><strong>Premium Membership</strong></p>
+		<label class="amount">
+			<span><%= "Amount: $ #{Amount.sum}" %></span>
+		</label>
+	</article>
+
+	<h4>Click the button!</h4>
+	<script class='stripe-button' 
+			src="https://checkout.stripe.com/checkout.js" 
+			data-key="<%= @stripe_btn_data[:key] %>" 
+			data-amount=<%= @stripe_btn_data[:amount]%> 
+			data-description="<%= @stripe_btn_data[:description] %>" >
+	</script>
+<% end %>

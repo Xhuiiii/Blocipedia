@@ -13,6 +13,11 @@
 			<li><%= link_to "Home", root_path %></li>
 			<li><%= link_to "About", welcome_about_path %></li> 
 			<li><%= link_to "Wikis", wikis_path %></li>
+			<% if current_user && current_user.premium? %>
+				<li><%= link_to "Downgrade", edit_user_registration_path %></li>
+			<% elsif current_user && current_user.standard? %>
+				<li><%= link_to "Upgrade", edit_user_registration_path %></li>
+			<% end %>
 			<div class="pull-right user-info">
 				<% if user_signed_in? %>
 					<% if current_user.username? %>

@@ -17,4 +17,8 @@ class WikiPolicy < ApplicationPolicy
 	def admin_or_owner?
 		@user.role == 'admin' || @user == @wiki.user
 	end
+
+	def admin_or_premium?
+		@user.admin? || @user.premium?
+	end
 end

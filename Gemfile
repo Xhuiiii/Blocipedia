@@ -13,6 +13,8 @@ source 'https://rubygems.org'
    gem 'web-console', '~> 2.0'
  end
  
+ gem 'redcarpet'
+ gem 'stripe'
  gem 'pundit'
  gem 'sass-rails', '~> 5.0'
  gem 'uglifier', '>= 1.3.0'

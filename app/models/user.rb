@@ -20,28 +20,20 @@ class User < ActiveRecord::Base
 		end
 	end
 
-	def set_as_standard
-		self.role = :standard
-	end
-
-	def set_as_premium
-		self.role = :premium
-	end
-
-	def set_as_admin
-		self.role = :admin
-	end
-
-	def admin?
+	def self.admin?
 		self.role == :admin
 	end
 
-	def standard?
+	def self.standard?
 		self.role == :standard
 	end
 
-	def premium?
+	def self.premium?
 		self.role == :premium
+	end
+
+	def edit
+		self.downgrade!
 	end
 
 	#Overwrite Devise's find_for_database_authentication method to change the behaviour of the login action. 

@@ -8,7 +8,8 @@
 	Wiki.create(
 		title: Faker::Lorem.word,
 		body: Faker::Lorem.paragraph(2, false, 4),
-		user: u
+		user: u,
+		private: false
 	)
 end
 users = User.all
@@ -17,6 +18,7 @@ users = User.all
 	Wiki.create(
 		title: Faker::Lorem.word,
 		body: Faker::Lorem.paragraph(2, false, 4),
-		user: users.sample
+		user: users.sample,
+		private: false
 	)
 end
