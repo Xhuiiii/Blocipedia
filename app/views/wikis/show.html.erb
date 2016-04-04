@@ -1,8 +1,8 @@
-<h1><%= @wiki.title %></h1>
+<h1><%= markdown(@wiki.title) %></h1>
 <div class="row">
 	<div class="col-md-8">
-		<p><%= @wiki.body %></p>
-		<% if @wiki.user.username? %>
+		<p><%= markdown(@wiki.body) %></p>
+		<% if @wiki.user.username %>
 			<p><%= "User: #{@wiki.user.username}" %></p>
 		<% else %>
 			<p><%= "User: #{@wiki.user.email}" %></p>
