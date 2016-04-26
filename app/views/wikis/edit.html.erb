@@ -1,2 +1,7 @@
 <h1>Edit wiki</h1>
 <%= render partial: 'form', locals: {wiki: @wiki} %>
+<% if current_user && (current_user.admin? || current_user.premium?) %>
+    <div class="form-group">
+       	<%= link_to "Manage Collaborators", collaborators_path(wiki_id: @wiki.id) %>
+    </div>
+<% end %>

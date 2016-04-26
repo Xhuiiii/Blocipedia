@@ -2,10 +2,7 @@ class WikisController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-      @wikis = Wiki.visible_to(current_user).where(private: false)
-      if current_user && (current_user.admin? || current_user.premium?)
-        @wikis = Wiki.all
-      end
+      @wikis = policy_scope(Wiki)
   end
 
   def show

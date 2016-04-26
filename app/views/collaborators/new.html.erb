@@ -1,0 +1,7 @@
+<%= form_for @collaborator do |f| %>
+  <div class="form-group">
+    <%= f.number_field :wiki_id %>
+    <%= f.number_field :user_id, class: 'form-control', placeholder: "Enter user_id" %>
+    <%= f.submit %>
+  </div>
+  <% end %>

@@ -1,0 +1,32 @@
+<h1>Add Collaborators to <%= @wiki.title %> wiki</h1>
+
+<table class="table table-bordered">
+  <tbody>
+<% @users.each do |user| %>
+      <tr>
+        <td class="col-md-4"><%= "User: #{user.email}" %></td>
+        <td class="col-md-1">
+          <% if Collaborator.find_by(user_id: user.id, wiki_id: params[:wiki_id]) %>
+          <div>
+            <input type="checkbox" class="collaborator-box" checked=true />
+            <a href="/collaborators/<%= user.id %>?wiki_id= <%= params[:wiki_id]%>" data-method="DELETE"> </a>
+          </div>
+          <% else %>
+            <div>
+              <input type="checkbox" class="collaborator-box"/>
+              <a href="/collaborators?user_id=<%= user.id %>&wiki_id= <%= params[:wiki_id]%>" data-method="POST"></a>
+            </div>
+          <% end %>
+        </td>
+      </tr>
+    </div>
+
+<% end %>
+</tbody>
+</table>
+
+<script>
+  $(".collaborator-box").click(function(){
+    console.log($(this).parent().find("a").click());
+  })
+</script>
